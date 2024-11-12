@@ -6,7 +6,7 @@
     background-color: white;
     color: black;
     padding: 20px 40px; /* ลด padding เพื่อให้เหมาะสมกับทุกแพลตฟอร์ม */
-    margin-top: 350px;
+    margin-top: 450px;
     border-bottom: 3px solid #0047AB; /* เส้นสีน้ำเงินด้านล่าง */
     position: relative;
     width: 100%; /* ขยาย Navbar ให้เต็มความกว้างของหน้าจอ */
@@ -35,7 +35,7 @@
     .navbar {
       padding: 15px 40px;
       height: 80px;
-      margin-top: 500px;
+      margin-top: 520px;
     }
   
     .navbar-menu {
@@ -48,7 +48,7 @@
     .navbar {
       padding: 10px 20px;
       height: 60px;
-      margin-top: 20px;
+      margin-top: 200px;
     }
   
     .navbar-menu {
