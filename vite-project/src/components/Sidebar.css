@@ -1,0 +1,66 @@
+/* สไตล์สำหรับ Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  /* จัดตำแหน่งปุ่ม "X" และโลโก้ให้อยู่ข้างกัน */
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between; /* ปุ่ม X ขวามือ, โลโก้ซ้ายมือ */
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar-logo-img {
+    width: 100px;  /* ปรับขนาดโลโก้ */
+    height: auto;
+    max-width: 100%;
+  }
+  
+  /* รายการเมนูใน Sidebar */
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .sidebar li {
+    margin: 20px 0;
+  }
+  
+  .sidebar a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  
+  .sidebar a:hover {
+    text-decoration: underline;
+  }
+  

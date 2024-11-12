@@ -1,0 +1,118 @@
+/* สไตล์สำหรับส่วน Activities */
+.activities-section {
+    background-color: #000;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .activities-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  .activity-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%; /* กำหนดความกว้าง */
+    max-width: 1200px; /* ความกว้างสูงสุด */
+    margin: 20px auto; /* จัดตำแหน่งกลาง */
+  }
+  
+  .activity-image {
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+    height: 80px;
+    border-radius: 10px;
+  }
+  
+  .activity-details {
+    padding: 20px;
+    text-align: left;
+    flex-grow: 1;
+    color: #000;
+    font-size: 12px;
+  }
+  
+  .activity-details h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+  }
+  
+  .activity-details p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  
+  .activity-details a {
+    color: #0047AB;
+    font-size: 1.1em;
+    text-decoration: none;
+  }
+  
+  .activity-details a:hover {
+    text-decoration: underline;
+  }
+  
+  /* สำหรับหน้าจอขนาดกลาง (เช่น tablet) */
+  @media (max-width: 768px) {
+    .activities-section {
+      padding: 30px 15px;
+    }
+  
+    .activity-item {
+      width: 100%; /* กำหนดให้เต็มความกว้าง */
+      margin: 15px 0; /* กำหนดระยะห่าง */
+      flex-direction: column; /* แสดงเนื้อหาภายในแต่ละกิจกรรมในแนวตั้ง */
+    }
+  
+    .activity-image {
+      max-width: 90%; /* กำหนดขนาดของภาพให้เหมาะสม */
+      margin-bottom: 15px; /* ระยะห่างระหว่างภาพและข้อความ */
+    }
+  
+    .activity-details {
+      padding: 15px;
+    }
+  
+    .activity-details h3 {
+      font-size: 1.5em; /* ปรับขนาดฟอนต์ให้เล็กลงบนหน้าจอขนาดเล็ก */
+    }
+  
+    .activity-details p {
+      font-size: 1em; /* ปรับขนาดฟอนต์ข้อความให้เล็กลง */
+    }
+  
+    .activity-details a {
+      font-size: 1em; /* ปรับขนาดฟอนต์ของลิงก์ให้เล็กลง */
+    }
+  }
+  
+  /* สำหรับหน้าจอขนาดเล็ก (เช่น mobile) */
+  @media (max-width: 480px) {
+    .activity-item {
+      padding: 10px; /* เพิ่มระยะห่างภายในให้ดูสะดวกตา */
+    }
+  
+    .activity-image {
+      max-width: 100%;
+      margin-bottom: 20px; /* เพิ่มระยะห่างใต้ภาพ */
+    }
+  
+    .activity-details {
+      font-size: 12px; /* ลดขนาดฟอนต์เพื่อให้พอดีกับหน้าจอมือถือ */
+    }
+  
+    .activity-details h3 {
+      font-size: 1.3em; /* ลดขนาดฟอนต์หัวข้อ */
+    }
+  }
+  

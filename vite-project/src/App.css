@@ -1,0 +1,76 @@
+/* นำเข้าฟอนต์ Prompt จาก Google Fonts โดยเพิ่มตัวหนา */
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap');
+
+/* รีเซ็ตการตั้งค่าเบื้องต้น */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Prompt', Arial, sans-serif;
+}
+
+/* สไตล์สำหรับส่วนโปรไฟล์ */
+.profile-section {
+  padding: 0px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-weight: 700;  /* เพิ่มตัวหนาให้กับหัวข้อ 'PROFILE' */
+  color: black;
+}
+
+.profile-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile-picture {
+  width: 250px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin-right: 20px;
+}
+
+.profile-details {
+  text-align: left;
+}
+
+.profile-details h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-weight: 700;  /* เพิ่มตัวหนาให้กับชื่อ */
+  color:black;
+}
+
+.profile-details p {
+  margin: 5px 0;
+  font-weight: 400;  /* ใช้ตัวปกติสำหรับข้อความในรายละเอียด */
+  color: black;
+}

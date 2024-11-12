@@ -1,0 +1,31 @@
+/* src/components/Footer.css */
+.footer {
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-text {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+  
