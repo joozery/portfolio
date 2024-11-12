@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[context.production.environment]
+  NODE_VERSION = "18"  # หรือเวอร์ชันที่ตรงกับโปรเจกต์ของคุณ
+  NPM_VERSION = "9"    # หรือเวอร์ชันที่ตรงกับโปรเจกต์ของคุณ
