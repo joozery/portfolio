@@ -1,6 +1,6 @@
 import React from "react";
 import "./LandingPage.css";
-import profileImage from "../assets/profile.png"; // แก้ path ให้ตรงกับโครงสร้างไฟล์
+import profileImage from "../assets/landingpic.jpg"; // แก้ path ให้ตรงกับโครงสร้างไฟล์
 
 const LandingPage = ({ onEnter }) => {
     return (
@@ -11,7 +11,8 @@ const LandingPage = ({ onEnter }) => {
                     alt="Profile"
                     className="profile-image"
                 />
-                <h1>Welcome to Portfolio Party</h1>
+                <h1>Welcome to </h1>
+                <h1>Portfolio Party</h1>
                 <button className="enter-button" onClick={onEnter}>
                     เข้าสู่ port
                 </button>
