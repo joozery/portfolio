@@ -1,6 +1,8 @@
-// src/components/Footer.jsx
 import React from 'react';
 import './Footer.css';  // เชื่อมโยงกับไฟล์ CSS ของ Footer
+import lineIcon from '../assets/line-icon.png'; // Path ไอคอน LINE ที่เก็บไว้ใน assets
+import facebookIcon from '../assets/facebook-icon.png';
+import instagramIcon from '../assets/instagram-icon.png';
 
 const Footer = () => {
   return (
@@ -11,13 +13,13 @@ const Footer = () => {
         </div>
         <div className="footer-links">
           <a href="https://line.me/ti/p/BGCkAemJQA" target="_blank" rel="noopener noreferrer">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/LINE_logo_2022.png" alt="Line" className="social-icon" />
+            <img src={lineIcon} alt="Line" className="social-icon" />
           </a>
           <a href="https://www.facebook.com/profile.php?id=61554584263650&mibextid=JRoKGi" target="_blank" rel="noopener noreferrer">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" className="social-icon" />
+            <img src={facebookIcon} alt="Facebook" className="social-icon" />
           </a>
           <a href="https://www.instagram.com/wiboonasti?igsh=bGJ2M2FpbjF6Yjh4&utm_source=qr" target="_blank" rel="noopener noreferrer">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" className="social-icon" />
+            <img src={instagramIcon} alt="Instagram" className="social-icon" />
           </a>
         </div>
       </div>
