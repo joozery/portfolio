@@ -1,31 +1,40 @@
-/* src/components/Footer.css */
+/* Footer.css */
 .footer {
-    background-color: #000;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .footer-text {
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-  
-  .footer-links {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .social-icon {
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
-  }
-  
+  background-color: #333; /* สีพื้นหลังของ Footer */
+  color: #fff; /* สีข้อความ */
+  padding: 20px 10px; /* เพิ่มช่องว่างภายใน */
+  text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* ระยะห่างระหว่างแต่ละส่วน */
+}
+
+.footer-text {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 15px; /* ระยะห่างระหว่างไอคอน */
+}
+
+.footer-links a {
+  text-decoration: none; /* ลบเส้นใต้ */
+}
+
+.social-icon {
+  width: 30px; /* ขนาดความกว้างของไอคอน */
+  height: 30px; /* ขนาดความสูงของไอคอน */
+  transition: transform 0.3s ease; /* เพิ่มเอฟเฟกต์การเคลื่อนไหวเมื่อเลื่อนเมาส์ */
+}
+
+.social-icon:hover {
+  transform: scale(1.2); /* ขยายไอคอนเมื่อเมาส์ชี้ */
+  filter: brightness(1.2); /* เพิ่มความสว่าง */
+}

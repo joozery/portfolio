@@ -1,8 +1,8 @@
 import React from 'react';
-import './Footer.css';  // เชื่อมโยงกับไฟล์ CSS ของ Footer
-import lineIcon from '../assets/line-icon.png'; // Path ไอคอน LINE ที่เก็บไว้ใน assets
-import facebookIcon from '../assets/facebook-icon.png';
-import instagramIcon from '../assets/instagram-icon.png';
+import './Footer.css'; // เชื่อมโยงกับไฟล์ CSS ของ Footer
+import lineIcon from '../assets/icons8-line.svg'; // อัปเดตเส้นทางของไฟล์ไอคอน LINE
+import facebookIcon from '../assets/icons8-facebook.svg'; // อัปเดตเส้นทางของไฟล์ไอคอน Facebook
+import instagramIcon from '../assets/icons8-instagram.svg'; // อัปเดตเส้นทางของไฟล์ไอคอน Instagram
 
 const Footer = () => {
   return (
