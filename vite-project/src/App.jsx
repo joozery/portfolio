@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage';
 import Navbar from './components/Navbar';
 import ImageSlider from './components/ImageSlider';
 import Activities from './components/Activities';
-import Dashboard from './components/Dashboard';  // นำเข้า Dashboard
+import Dashboard from './Dashboard.jsx';  // นำเข้า Dashboard
 import Footer from './components/Footer';
 import './App.css';
 import profilePic from './assets/profile.png';
