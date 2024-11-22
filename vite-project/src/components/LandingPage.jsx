@@ -1,6 +1,6 @@
 import React from "react";
 import "./LandingPage.css";
-import profileImage from "../assets/landingpic.jpg"; // แก้ path ให้ตรงกับโครงสร้างไฟล์
+import profileImage from "../assets/proflie01.jpg"; // แก้ path ให้ตรงกับโครงสร้างไฟล์
 
 const LandingPage = ({ onEnter }) => {
     return (

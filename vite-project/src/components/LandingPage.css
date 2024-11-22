@@ -22,8 +22,8 @@
 .enter-button {
     padding: 10px 20px;
     font-size: 18px;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
