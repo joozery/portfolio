@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage';
 import Navbar from './components/Navbar';
 import ImageSlider from './components/ImageSlider';
 import Activities from './components/Activities';
-import Dashboard from './Dashboard.jsx';  // นำเข้า Dashboard
+import Dashboard from './components/Dashboard';  // นำเข้าไฟล์ Dashboard.jsx
 import Footer from './components/Footer';
 import './App.css';
 import profilePic from './assets/profile.png';
@@ -12,6 +12,7 @@ import profilePic from './assets/profile.png';
 function App() {
   const [showLandingPage, setShowLandingPage] = useState(true);
 
+  // ฟังก์ชันสำหรับเปลี่ยนจาก LandingPage ไปยังหน้าอื่น ๆ
   const handleEnterApp = () => {
     setShowLandingPage(false);
   };
@@ -24,6 +25,7 @@ function App() {
         <>
           <Navbar />
           <Routes>
+            {/* Route สำหรับหน้า Portfolio */}
             <Route
               path="/"
               element={
@@ -47,12 +49,13 @@ function App() {
                       </div>
                     </div>
                   </section>
-                  <Activities />
+                  <Activities /> {/* แสดงส่วน Activities */}
                 </>
               }
             />
-            {/* กำหนด Route สำหรับ Dashboard */}
+            {/* Route สำหรับหน้า Dashboard */}
             <Route path="/dashboard" element={<Dashboard />} />
+            {/* Route สำหรับหน้า Activities */}
             <Route path="/activities" element={<Activities />} />
           </Routes>
           <Footer />
