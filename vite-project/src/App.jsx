@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Navbar from './components/Navbar';
@@ -10,19 +10,10 @@ import profilePic from './assets/profile.png';
 
 function App() {
   const [showLandingPage, setShowLandingPage] = useState(true);
-  const [db, setDb] = useState(null);
 
   const handleEnterApp = () => {
     setShowLandingPage(false);
   };
-
-  useEffect(() => {
-    const setupDatabase = async () => {
-      const database = await initializeDatabase();
-      setDb(database);
-    };
-    setupDatabase();
-  }, []);
 
   return (
     <Router>
@@ -55,11 +46,11 @@ function App() {
                       </div>
                     </div>
                   </section>
-                  <Activities db={db} />
+                  <Activities />
                 </>
               }
             />
-            <Route path="/activities" element={<Activities db={db} />} />
+            <Route path="/activities" element={<Activities />} />
           </Routes>
           <Footer />
         </>
