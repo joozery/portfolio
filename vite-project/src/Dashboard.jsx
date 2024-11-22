@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TextField,
-  Paper,
-} from "@mui/material";
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Paper } from "@mui/material";
 
 const Dashboard = () => {
   const [activities, setActivities] = useState([]);
   const [newActivity, setNewActivity] = useState({ title: "", description: "" });
 
-  // ฟังก์ชันดึงข้อมูลกิจกรรม
   const fetchActivities = async () => {
     try {
       const response = await fetch("http://localhost:5000/activities");
@@ -27,7 +15,6 @@ const Dashboard = () => {
     }
   };
 
-  // ฟังก์ชันเพิ่มกิจกรรม
   const addActivity = async () => {
     try {
       await fetch("http://localhost:5000/activities", {
@@ -37,20 +24,19 @@ const Dashboard = () => {
         },
         body: JSON.stringify(newActivity),
       });
-      fetchActivities(); // อัปเดตข้อมูลหลังจากเพิ่ม
+      fetchActivities();
       setNewActivity({ title: "", description: "" });
     } catch (error) {
       console.error("Error adding activity:", error);
     }
   };
 
-  // ฟังก์ชันลบกิจกรรม
   const deleteActivity = async (id) => {
     try {
       await fetch(`http://localhost:5000/activities/${id}`, {
         method: "DELETE",
       });
-      fetchActivities(); // อัปเดตข้อมูลหลังจากลบ
+      fetchActivities();
     } catch (error) {
       console.error("Error deleting activity");
     }
@@ -64,7 +50,6 @@ const Dashboard = () => {
     <Box sx={{ p: 3 }}>
       <h2>Admin Dashboard - Manage Activities</h2>
 
-      {/* ฟอร์มเพิ่มกิจกรรม */}
       <Box sx={{ mb: 2 }}>
         <TextField
           label="Title"
@@ -83,7 +68,6 @@ const Dashboard = () => {
         </Button>
       </Box>
 
-      {/* ตารางแสดงกิจกรรม */}
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
