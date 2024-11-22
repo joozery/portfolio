@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import initializeDatabase from './initializeDatabase'; // Import ฟังก์ชันฐานข้อมูล
 import LandingPage from './components/LandingPage'; // Import LandingPage
 import Navbar from './components/Navbar';
 import ImageSlider from './components/ImageSlider';
@@ -10,11 +11,21 @@ import profilePic from './assets/profile.png';
 function App() {
   // ใช้ state เพื่อควบคุมการแสดงผลหน้า LandingPage หรือ App
   const [showLandingPage, setShowLandingPage] = useState(true);
+  const [db, setDb] = useState(null); // เก็บฐานข้อมูล SQLite
 
   // ฟังก์ชันสำหรับเปลี่ยนไปยังหน้า App
   const handleEnterApp = () => {
     setShowLandingPage(false);
   };
+
+  // โหลดฐานข้อมูล SQLite เมื่อ Component ถูก mount
+  useEffect(() => {
+    const setupDatabase = async () => {
+      const database = await initializeDatabase();
+      setDb(database);
+    };
+    setupDatabase();
+  }, []);
 
   return (
     <>
@@ -52,7 +63,7 @@ function App() {
           </section>
 
           {/* เพิ่มส่วน Activities */}
-          <Activities />
+          <Activities db={db} />
 
           {/* เพิ่ม Footer */}
           <Footer />
