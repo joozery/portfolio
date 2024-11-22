@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-text">
-          <p>Portfolio Panayut Kosol</p>
+          <p>Portfolio Teeratat Wiboonsanti</p>
         </div>
         <div className="footer-links">
           <a href="https://line.me/ti/p/BGCkAemJQA" target="_blank" rel="noopener noreferrer">
