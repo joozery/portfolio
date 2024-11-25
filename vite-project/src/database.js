@@ -1,11 +1,10 @@
-import initSqlJs from 'sql.js';
+import initSqlJs from "sql.js";
 
 export async function createDatabase() {
-  const SQL = await initSqlJs({
-    locateFile: (file) => `/sql-wasm.wasm`,
-  });
-
+  const SQL = await initSqlJs();
   const db = new SQL.Database();
+
+  console.log("Database initialized"); // Log การสร้างฐานข้อมูล
 
   db.run(`
     CREATE TABLE IF NOT EXISTS activities (
@@ -15,6 +14,7 @@ export async function createDatabase() {
       image_url TEXT
     )
   `);
+  console.log("Table 'activities' is ready"); // Log การสร้างตาราง
 
   return db;
 }
