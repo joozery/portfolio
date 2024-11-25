@@ -1,11 +1,12 @@
 import React from 'react';
-import './About.css';
+import './About.css';  // นำเข้าไฟล์ CSS
 
 const About = () => {
   return (
     <section className="about-section">
       <h1>ABOUT</h1>
       <div className="about-content">
+        {/* เนื้อหาภาษาไทย */}
         <div className="about-text">
           <h2>สวัสดีครับทุกท่าน</h2>
           <p>
@@ -14,10 +15,14 @@ const About = () => {
             หวังว่าเว็บไซต์นี้จะเป็นแหล่งข้อมูลและแรงบันดาลใจให้กับทุกท่าน หากมีข้อเสนอแนะหรือความคิดเห็นใด กระผมยินดีรับฟังและพัฒนาเว็บไซต์ให้ดีขึ้น
           </p>
         </div>
+        
+        {/* รูปภาพ */}
         <div className="about-image">
           <img src="about-image.jpg" alt="About Me" />
         </div>
       </div>
+
+      {/* เนื้อหาภาษาอังกฤษ */}
       <div className="about-english">
         <h2>Hello everyone,</h2>
         <p>
