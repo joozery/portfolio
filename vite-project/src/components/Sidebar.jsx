@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/logo02.png';  // นำเข้าโลโก้
+import { Link } from 'react-router-dom';  // นำเข้า Link จาก React Router
 import './Sidebar.css';
 
 const Sidebar = ({ closeSidebar }) => {
@@ -21,7 +22,7 @@ const Sidebar = ({ closeSidebar }) => {
         <li><a href="#academic-training">Academic Activities Training Attended</a></li>
         <li><a href="#recreational-activities">Recreational Activities</a></li>
         <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li><Link to="/about">About</Link></li> {/* ใช้ Link จาก React Router */}
       </ul>
     </div>
   );
