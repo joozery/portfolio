@@ -37,8 +37,8 @@
 .activity-info {
     display: flex;
     flex-direction: column;
-    align-items: center; /* ทำให้ข้อความอยู่ตรงกลาง */
-    text-align: center; /* จัดข้อความให้ตรงกลาง */
+    align-items: flex-start; /* จัดให้ข้อความอยู่ชิดซ้าย */
+    text-align: left; /* ตั้งค่าข้อความให้เริ่มจากซ้าย */
 }
 
 .activity-info h3 {
