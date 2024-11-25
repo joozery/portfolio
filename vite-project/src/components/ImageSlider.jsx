@@ -14,8 +14,8 @@ const ImageSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // เปลี่ยนภาพทุก 3 วินาที
-    return () => clearInterval(interval);
+    }, 5000); // เปลี่ยนภาพทุก 5 วินาที
+    return () => clearInterval(interval); // เมื่อคอมโพเนนต์ถูกลบจะหยุด interval
   }, []);
 
   return (
@@ -23,6 +23,8 @@ const ImageSlider = () => {
       <div className="image-slider-single">
         <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slide-image-single" />
       </div>
+      
+      {/* Dot indicators */}
       <div className="dots">
         {images.map((_, index) => (
           <span
