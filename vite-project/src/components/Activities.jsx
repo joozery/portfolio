@@ -4,93 +4,48 @@ import { createDatabase } from "../database";  // นำเข้าฟังก
 
 function Activities() {
   const [activities, setActivities] = useState([]);
-  const [newActivity, setNewActivity] = useState({
-    title: "",
-    description: "",
-    imageFile: null,
-  });
-
   const [db, setDb] = useState(null);
 
-  // สร้างฐานข้อมูลเมื่อ Component mount
+  // สร้างฐานข้อมูล SQLite เมื่อ Component Mount
   useEffect(() => {
-    const initDb = () => {
-      const database = createDatabase();  // ใช้ฐานข้อมูลที่เราสร้างใน database.js
+    const initDb = async () => {
+      const database = await createDatabase();  // สร้างฐานข้อมูล
       setDb(database);
 
       // ดึงข้อมูลกิจกรรมจากฐานข้อมูล
-      const results = database.prepare("SELECT * FROM activities").all();
+      const results = database.exec("SELECT * FROM activities");
       if (results.length > 0) {
-        setActivities(results);  // เก็บข้อมูลใน state
+        const activityData = results[0].values.map(([id, title, description, image_url]) => ({
+          id,
+          title,
+          description,
+          imageUrl: image_url,
+        }));
+        setActivities(activityData);  // อัปเดตข้อมูลกิจกรรม
       }
     };
-    initDb();
+    initDb();  // เรียกฟังก์ชันในการสร้างฐานข้อมูล
   }, []);
-
-  // ฟังก์ชันเพิ่มกิจกรรมใหม่
-  const addActivity = (e) => {
-    e.preventDefault();
-
-    if (db) {
-      db.prepare(
-        "INSERT INTO activities (title, description, image_url) VALUES (?, ?, ?)"
-      ).run(newActivity.title, newActivity.description, newActivity.imageFile);
-
-      // อัปเดตรายการกิจกรรมใน State
-      setActivities((prev) => [
-        ...prev,
-        {
-          id: prev.length + 1,
-          title: newActivity.title,
-          description: newActivity.description,
-          imageUrl: newActivity.imageFile,
-        },
-      ]);
-
-      // รีเซ็ตฟอร์ม
-      setNewActivity({ title: "", description: "", imageFile: null });
-    }
-  };
 
   return (
     <section className="activities-section">
       <h2>Activities</h2>
-
-      <form onSubmit={addActivity}>
-        <input
-          type="text"
-          placeholder="Activity Title"
-          value={newActivity.title}
-          onChange={(e) => setNewActivity({ ...newActivity, title: e.target.value })}
-          required
-        />
-        <textarea
-          placeholder="Activity Description"
-          value={newActivity.description}
-          onChange={(e) => setNewActivity({ ...newActivity, description: e.target.value })}
-          required
-        ></textarea>
-        <input
-          type="file"
-          onChange={(e) => setNewActivity({ ...newActivity, imageFile: e.target.files[0] })}
-          required
-        />
-        <button type="submit">Add Activity</button>
-      </form>
-
-      <div className="activities-list">
-        {activities.length === 0 ? (
-          <p>No activities available.</p>
-        ) : (
-          activities.map((activity) => (
-            <div key={activity.id}>
+      {activities.length === 0 ? (
+        <p>No activities available. Please add some activities.</p>
+      ) : (
+        <div className="activities-list">
+          {activities.map((activity) => (
+            <div className="activity-item" key={activity.id}>
+              <img src={activity.imageUrl} alt={activity.title} style={{ width: "100%", borderRadius: "8px" }} />
               <h3>{activity.title}</h3>
               <p>{activity.description}</p>
-              <img src={activity.image_url} alt={activity.title} />
+              <a href={`/activity/${activity.id}`} className="more-link">
+                more
+              </a>
             </div>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
