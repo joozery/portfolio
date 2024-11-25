@@ -1,46 +1,39 @@
-/* ImageSlider.css */
-.image-slider-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow: hidden;
-}
+import React, { useState, useEffect } from 'react';
+import './ImageSlider.css';
 
-.image-slider-single {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
+// นำเข้าภาพ
+import slide01 from '../assets/slide01.jpg';
+import slide02 from '../assets/slide02.jpg';
 
-.slide-image-single {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
+const images = [slide01, slide02];
 
-.dots {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
+const ImageSlider = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-.dot {
-  width: 15px;
-  height: 15px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
+  // ฟังก์ชันเปลี่ยนภาพอัตโนมัติ
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // เปลี่ยนภาพทุก 3 วินาที
+    return () => clearInterval(interval);
+  }, []);
 
-.dot.active {
-  background-color: #0047ab; /* สีของ dot ที่ active */
-}
+  return (
+    <div className="image-slider-container">
+      <div className="image-slider-single">
+        <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slide-image-single" />
+      </div>
+      <div className="dots">
+        {images.map((_, index) => (
+          <span
+            key={index}
+            className={`dot ${currentIndex === index ? 'active' : ''}`}
+            onClick={() => setCurrentIndex(index)}
+          ></span>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-.dot:hover {
-  background-color: #007bff;
-}
+export default ImageSlider;
