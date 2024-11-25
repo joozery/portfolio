@@ -1,25 +1,22 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
+import initSqlJs from 'sql.js';
 
-export default defineConfig({
-  plugins: [react()],
-  build: {
-    outDir: 'dist', // กำหนด output folder
-    rollupOptions: {
-      output: {
-        format: 'esm', // ใช้ ES Module
-      },
-    },
-  },
-  publicDir: 'public', // ให้แน่ใจว่า public directory จะถูกคัดลอกไปยัง build
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, './src'),
-      'sql.js': resolve(__dirname, './node_modules/sql.js/dist/sql-wasm.js'), // ชี้ไปยังไฟล์ WebAssembly
-    },
-  },
-  worker: {
-    format: 'es', // รองรับ WebAssembly ใน worker
-  },
-});
+export async function createDatabase() {
+  const SQL = await initSqlJs({
+    locateFile: (file) => `/sql-wasm.wasm`, // ชี้ไปยังไฟล์ใน public folder
+  });
+
+  const db = new SQL.Database();
+
+  // สร้างตาราง activities
+  db.run(`
+    CREATE TABLE IF NOT EXISTS activities (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      description TEXT NOT NULL,
+      image_url TEXT
+    )
+  `);
+
+  console.log('Database initialized and table created.');
+  return db;
+}
