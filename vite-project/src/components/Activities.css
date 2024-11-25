@@ -1,7 +1,7 @@
 /* src/components/Activities.css */
 .activities-section {
     padding: 20px;
-    background-color: #f8f9fa; /* เพิ่มพื้นหลังที่อ่อน */
+    background-color: black; /* เพิ่มพื้นหลังที่อ่อน */
     border-radius: 10px; /* เพิ่มมุมโค้งให้กับ section */
 }
 
