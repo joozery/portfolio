@@ -5,9 +5,9 @@ import "./Activities.css"; // import CSS ที่เราสร้างไว
 const activities = [
   {
     id: 1,
-    title: "Academic Activities Competition",
-    description: "กิจกรรมการแข่งขัน ด้านวิชาการ",
-    imageUrl: "https://link-to-your-image-1.jpg",
+    title: "จิตอาสา เก็บขยะตามชายหาด",
+    description: "สถานที่ บางแสน",
+    imageUrl: require("../assets/จิตอาสา เก็บขยะตามชายหาด บางแสน.jpg"),
     link: "/academic-activities"
   },
   {
