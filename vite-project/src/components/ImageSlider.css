@@ -1,22 +1,25 @@
-/* src/components/ImageSlider.css */
+/* src/components/About.css */
+
+/* เพิ่มการปรับขนาดให้เต็มพื้นที่ */
 .image-slider-container {
   position: relative;
   width: 100%;
-  height: 400px; /* กำหนดความสูงของ container ของภาพ */
+  margin: 0 auto;
   overflow: hidden;
 }
 
 .image-slider-single {
   width: 100%;
-  height: 100%; /* ทำให้ container ของแต่ละภาพเต็มความสูงที่กำหนด */
   display: flex;
   justify-content: center;
+  /* เอาขอบขาวออก */
+  padding: 0;
 }
 
 .slide-image-single {
   width: 100%;
-  height: 350px;
-  object-fit: cover; /* ทำให้ภาพขยายเต็มขนาดใน container และครอบคลุมทั้งภาพ */
+  height: 300px; /* กำหนดความสูงของภาพให้เท่ากัน */
+  object-fit: cover; /* ทำให้ภาพขยายเต็มขนาดใน container */
 }
 
 .dots {
@@ -43,4 +46,16 @@
 
 .dot:hover {
   background-color: #007bff;
+}
+
+/* ปรับขนาดสำหรับหน้าจอเล็ก */
+@media (max-width: 768px) {
+  .slide-image-single {
+    height: 200px; /* ลดความสูงของภาพสำหรับหน้าจอเล็ก */
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+  }
 }
