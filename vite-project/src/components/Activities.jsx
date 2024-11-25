@@ -1,5 +1,6 @@
+// src/components/Activities.jsx
 import React, { useState, useEffect } from "react";
-import { createDatabase } from "../database";  // นำเข้าไฟล์ฐานข้อมูล
+import { createDatabase } from "../database";  // นำเข้าฟังก์ชัน createDatabase
 
 function Activities() {
   const [activities, setActivities] = useState([]);
@@ -11,7 +12,7 @@ function Activities() {
 
   const [db, setDb] = useState(null);
 
-  // สร้างฐานข้อมูลและดึงข้อมูลเมื่อ component mount
+  // สร้างฐานข้อมูลเมื่อ Component mount
   useEffect(() => {
     const initDb = () => {
       const database = createDatabase();  // ใช้ฐานข้อมูลที่เราสร้างใน database.js
