@@ -5,65 +5,40 @@
   justify-content: space-between;
   background-color: white;
   color: black;
-  padding: 20px 40px; /* padding พอดีกับหน้าจอขนาดใหญ่ */
+  padding: 20px 40px;
   margin-top: 0;
-  border-bottom: 3px solid #0047AB; /* เส้นสีน้ำเงินด้านล่าง */
-  position: fixed; /* ทำให้ navbar อยู่คงที่เมื่อเลื่อนหน้าจอ */
-  width: 100%; /* ขยาย Navbar ให้เต็มความกว้างของหน้าจอ */
-  height: 80px;  /* กำหนดความสูงของ Navbar */
-  top: 0; /* ให้ Navbar อยู่ที่ตำแหน่งบนสุดของหน้าจอ */
-  z-index: 1000; /* ให้ navbar อยู่ด้านบนสุด */
+  border-bottom: 3px solid #0047AB;
+  position: fixed;
+  top: 0; /* ทำให้ navbar คงที่ที่ด้านบนสุด */
+  width: 100%;
+  height: 80px;
+  z-index: 1000; /* ทำให้ navbar อยู่ด้านบนสุด */
 }
 
-.navbar-logo-group {
-  display: flex;
-  align-items: center;
+/* ส่วนของเนื้อหาหลังจาก navbar */
+.content {
+  margin-top: 100px; /* ให้เนื้อหาด้านล่างเริ่มจากใต้ navbar */
 }
 
-.navbar-logo {
-  width: 150px;
-}
-
-.navbar-menu {
-  background: none;
-  border: none;
-  color: black;
-  font-size: 2em;
-  cursor: pointer;
-}
-
-/* ปรับการแสดงผลบนหน้าจอขนาดกลาง (เช่น tablet) */
-@media (max-width: 1024px) {
-  .navbar {
-    padding: 15px 30px; /* ลด padding บนหน้าจอขนาดกลาง */
-    height: 70px; /* ปรับความสูงให้เหมาะสม */
-  }
-
-  .navbar-menu {
-    font-size: 1.8em; /* ปรับขนาดฟอนต์ */
-  }
-}
-
-/* ปรับการแสดงผลบนหน้าจอขนาดเล็ก (เช่น mobile) */
+/* กำหนดขนาดความสูงของ navbar และการแสดงผลสำหรับอุปกรณ์ที่มีขนาดหน้าจอเล็ก */
 @media (max-width: 768px) {
   .navbar {
-    padding: 10px 20px; /* ลด padding */
-    height: 60px; /* ปรับความสูงให้เหมาะสม */
+    padding: 15px 30px;
+    height: 70px;
   }
 
-  .navbar-menu {
-    font-size: 1.5em; /* ลดขนาดฟอนต์ */
+  .content {
+    margin-top: 80px; /* เพิ่มช่องว่างให้พอเหมาะกับ navbar */
   }
 }
 
-/* ปรับการแสดงผลบนหน้าจอขนาดเล็กพิเศษ (เช่น mobile devices) */
 @media (max-width: 480px) {
   .navbar {
-    padding: 10px 15px; /* ลด padding สำหรับมือถือ */
-    height: 60px; /* ปรับความสูง */
+    padding: 10px 20px;
+    height: 60px;
   }
 
-  .navbar-menu {
-    font-size: 1.4em; /* ลดขนาดฟอนต์ */
+  .content {
+    margin-top: 70px; /* ปรับช่องว่างให้พอเหมาะกับ navbar ขนาดเล็ก */
   }
 }
