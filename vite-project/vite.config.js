@@ -17,11 +17,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
-      'sql.js': resolve(__dirname, './node_modules/sql.js/dist/sql-wasm.js'),
     },
   },
   optimizeDeps: {
-    exclude: ['sql.js'],
+    exclude: [],  // ลบ 'sql.js' ออกจากการ exclude หากคุณไม่ใช้ใน frontend
   },
   worker: {
     format: 'es',
