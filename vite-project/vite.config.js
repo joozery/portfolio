@@ -5,12 +5,25 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist', // กำหนด output folder สำหรับ build
+    outDir: 'dist',
+    rollupOptions: {
+      output: {
+        format: 'es',
+      },
+    },
+    target: 'esnext',
   },
-  publicDir: 'public', // ให้แน่ใจว่า public directory จะถูกคัดลอกไปยัง build
+  publicDir: 'public',
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'), // ตั้ง alias สำหรับ src
+      '@': resolve(__dirname, './src'),
+      'sql.js': resolve(__dirname, './node_modules/sql.js/dist/sql-wasm.js'),
     },
+  },
+  optimizeDeps: {
+    exclude: ['sql.js'],
+  },
+  worker: {
+    format: 'es',
   },
 });
