@@ -1,8 +1,9 @@
 /* src/components/Activities.css */
 .activities-section {
     padding: 20px;
-    background-color: black; /* เพิ่มพื้นหลังที่อ่อน */
-    text-align: center; /* ทำให้ข้อความ 'Activities' อยู่ตรงกลาง */
+    background-color: black;
+    text-align: center;
+    font-family: 'Prompt', sans-serif; /* ใช้ฟอนต์ Prompt */
 }
 
 .activities-list {
@@ -13,7 +14,7 @@
 
 .activity-item {
     display: flex;
-    align-items: center; /* จัดให้รูปภาพและข้อความอยู่ในแนวนอน */
+    align-items: center;
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
@@ -22,36 +23,36 @@
 }
 
 .activity-item:hover {
-    transform: translateY(-5px); /* เมื่อ hover จะยกขึ้น */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* เพิ่มเงาหนาเมื่อ hover */
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .activity-image {
-    width: 100px; /* กำหนดขนาดของรูป */
+    width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 8px;
-    margin-right: 15px; /* ช่องว่างระหว่างรูปและข้อความ */
+    margin-right: 15px;
 }
 
 .activity-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* จัดให้ข้อความอยู่ชิดซ้าย */
-    text-align: left; /* ตั้งค่าข้อความให้เริ่มจากซ้าย */
+    align-items: flex-start;
+    text-align: left;
 }
 
 .activity-info h3 {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px; /* เพิ่มช่องว่างด้านล่าง */
-    color: #333; /* สีตัวอักษรเข้ม */
+    margin-bottom: 10px;
+    color: #333;
 }
 
 .activity-info p {
     margin: 5px 0;
     font-size: 14px;
-    color: #555; /* สีตัวอักษรอ่อน */
+    color: #555;
 }
 
 .activity-info a {
@@ -62,12 +63,13 @@
 
 .activity-info a:hover {
     text-decoration: underline;
-    color: #0056b3; /* เมื่อ hover สีเปลี่ยน */
+    color: #0056b3;
 }
 
 h2 {
-    font-size: 32px; /* ขนาดตัวอักษรสำหรับหัวข้อ */
-    font-weight: bold; /* ตัวหนา */
-    color: #fff; /* เปลี่ยนสีตัวอักษรเป็นขาว */
-    margin-bottom: 30px; /* ช่องว่างระหว่างหัวข้อกับเนื้อหา */
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 30px;
+    font-family: 'Prompt', sans-serif; /* ใช้ฟอนต์ Prompt */
 }
