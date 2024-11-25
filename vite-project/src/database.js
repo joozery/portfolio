@@ -1,11 +1,13 @@
-import initSqlJs from "sql.js";
+import initSqlJs from 'sql.js';
 
 export async function createDatabase() {
-  const SQL = await initSqlJs();
+  const SQL = await initSqlJs({
+    locateFile: (file) => `/sql-wasm.wasm`, // ชี้ไปยังไฟล์ใน public
+  });
+
   const db = new SQL.Database();
 
-  console.log("Database initialized"); // Log การสร้างฐานข้อมูล
-
+  // สร้างตาราง activities
   db.run(`
     CREATE TABLE IF NOT EXISTS activities (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -14,7 +16,6 @@ export async function createDatabase() {
       image_url TEXT
     )
   `);
-  console.log("Table 'activities' is ready"); // Log การสร้างตาราง
 
   return db;
 }
