@@ -16,9 +16,10 @@
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex; /* ให้รายการในแต่ละรายการอยู่ข้างๆ */
-    gap: 20px; /* กำหนดระยะห่างระหว่างภาพและเนื้อหา */
+    display: flex; /* ใช้ flexbox เพื่อตั้งภาพและข้อความ */
+    gap: 20px; /* กำหนดระยะห่างระหว่างภาพและข้อความ */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-direction: row; /* แนวตั้ง */
 }
 
 .activity-item:hover {
@@ -35,22 +36,23 @@
 
 .activity-info {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* เรียงตัวกันแนวตั้ง */
     align-items: flex-start;
     justify-content: center;
+    color: white; /* ทำให้ข้อความสีขาว */
+    gap: 10px;
 }
 
 .activity-info h3 {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px; /* เพิ่มช่องว่างด้านล่าง */
-    color: #333; /* สีตัวอักษรเข้ม */
+    margin-bottom: 5px;
 }
 
 .activity-info p {
     margin: 5px 0;
     font-size: 14px;
-    color: #555; /* สีตัวอักษรอ่อน */
+    color: #ddd; /* สีตัวอักษรอ่อน */
 }
 
 .activity-info a {
