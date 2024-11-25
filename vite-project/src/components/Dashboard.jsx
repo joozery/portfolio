@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { createDatabase } from "../database"; // ดึงข้อมูลจากฐานข้อมูล SQLite
+import { createDatabase } from "../database"; // สำหรับจัดการ SQLite
 import { Box, Grid, Paper, Typography, Button, TextField, List, ListItem, ListItemText } from "@mui/material";
 
 function Dashboard() {
   const [db, setDb] = useState(null);
   const [activities, setActivities] = useState([]);
-  const [newActivity, setNewActivity] = useState({ title: "", description: "", imageUrl: "" });
+  const [newActivity, setNewActivity] = useState({ title: "", description: "", imageFile: null });
 
   // สร้างฐานข้อมูล SQLite เมื่อ Component Mount
   useEffect(() => {
@@ -16,17 +16,29 @@ function Dashboard() {
       // ดึงข้อมูลกิจกรรมจากฐานข้อมูล
       const result = database.exec("SELECT * FROM activities");
       if (result.length > 0) {
-        const rows = result[0].values.map(([id, title, description, imageUrl]) => ({
+        const rows = result[0].values.map(([id, title, description, image_url]) => ({
           id,
           title,
           description,
-          imageUrl,
+          imageUrl: image_url,
         }));
         setActivities(rows);
       }
     };
     initDb();
   }, []);
+
+  // ฟังก์ชันสำหรับอัปโหลดรูปภาพ
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewActivity((prev) => ({ ...prev, imageFile: reader.result })); // เก็บ Base64 รูปภาพ
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   // ฟังก์ชันสำหรับเพิ่มกิจกรรมใหม่
   const addActivity = (e) => {
@@ -36,17 +48,22 @@ function Dashboard() {
       // บันทึกกิจกรรมลงในฐานข้อมูล
       db.run(
         "INSERT INTO activities (title, description, image_url) VALUES (?, ?, ?)",
-        [newActivity.title, newActivity.description, newActivity.imageUrl]
+        [newActivity.title, newActivity.description, newActivity.imageFile]
       );
 
       // อัปเดตรายการกิจกรรมใน State
       setActivities((prev) => [
         ...prev,
-        { id: prev.length + 1, ...newActivity },
+        {
+          id: prev.length + 1,
+          title: newActivity.title,
+          description: newActivity.description,
+          imageUrl: newActivity.imageFile,
+        },
       ]);
 
       // รีเซ็ตฟอร์ม
-      setNewActivity({ title: "", description: "", imageUrl: "" });
+      setNewActivity({ title: "", description: "", imageFile: null });
     }
   };
 
@@ -81,14 +98,12 @@ function Dashboard() {
             required
             margin="normal"
           />
-          <TextField
-            fullWidth
-            label="Image URL"
-            variant="outlined"
-            value={newActivity.imageUrl}
-            onChange={(e) => setNewActivity({ ...newActivity, imageUrl: e.target.value })}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
             required
-            margin="normal"
+            style={{ margin: "10px 0" }}
           />
           <Button type="submit" variant="contained" color="primary" sx={{ marginTop: 2 }}>
             Add Activity
@@ -111,6 +126,13 @@ function Dashboard() {
                   primary={activity.title}
                   secondary={activity.description}
                 />
+                {activity.imageUrl && (
+                  <img
+                    src={activity.imageUrl}
+                    alt={activity.title}
+                    style={{ width: "100px", height: "auto", borderRadius: "8px", marginLeft: "20px" }}
+                  />
+                )}
               </ListItem>
             ))}
           </List>
