@@ -1,8 +1,8 @@
-/* ImageSlider.css */
+/* src/components/ImageSlider.css */
 .image-slider-container {
   position: relative;
   width: 100%;
-  max-width: 100%; /* ให้ภาพขยายเต็มหน้าจอ */
+  max-width: 100%; /* ทำให้ภาพขยายเต็มหน้าจอ */
   margin: 0 auto;
   overflow: hidden;
 }
@@ -15,8 +15,8 @@
 
 .slide-image-single {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 100%;
+  object-fit: cover; /* ทำให้ภาพขยายเต็มขนาดใน container */
 }
 
 .dots {
