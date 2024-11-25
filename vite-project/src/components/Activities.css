@@ -3,65 +3,64 @@
     padding: 20px;
     background-color: black; /* เพิ่มพื้นหลังที่อ่อน */
     border-radius: 10px; /* เพิ่มมุมโค้งให้กับ section */
-}
-
-.activities-list {
+  }
+  
+  .activities-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.activity-item {
+  }
+  
+  .activity-item {
+    display: flex;
+    align-items: center; /* จัดให้รูปภาพและข้อความอยู่ในแนวนอน */
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex; /* ใช้ flexbox เพื่อตั้งภาพและข้อความ */
-    gap: 20px; /* กำหนดระยะห่างระหว่างภาพและข้อความ */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex-direction: row; /* แนวตั้ง */
-}
-
-.activity-item:hover {
+  }
+  
+  .activity-item:hover {
     transform: translateY(-5px); /* เมื่อ hover จะยกขึ้น */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* เพิ่มเงาหนาเมื่อ hover */
-}
-
-.activity-image {
-    width: 200px; /* กำหนดขนาดของภาพ */
-    height: 150px; /* กำหนดขนาดของภาพ */
+  }
+  
+  .activity-image {
+    width: 100px; /* กำหนดขนาดของรูป */
+    height: 100px;
     object-fit: cover;
     border-radius: 8px;
-}
-
-.activity-info {
+    margin-right: 15px; /* ช่องว่างระหว่างรูปและข้อความ */
+  }
+  
+  .activity-info {
     display: flex;
-    flex-direction: column; /* เรียงตัวกันแนวตั้ง */
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    color: white; /* ทำให้ข้อความสีขาว */
-    gap: 10px;
-}
-
-.activity-info h3 {
+  }
+  
+  .activity-info h3 {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.activity-info p {
+    margin-bottom: 10px; /* เพิ่มช่องว่างด้านล่าง */
+    color: #333; /* สีตัวอักษรเข้ม */
+  }
+  
+  .activity-info p {
     margin: 5px 0;
     font-size: 14px;
-    color: #ddd; /* สีตัวอักษรอ่อน */
-}
-
-.activity-info a {
+    color: #555; /* สีตัวอักษรอ่อน */
+  }
+  
+  .activity-info a {
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
-}
-
-.activity-info a:hover {
+  }
+  
+  .activity-info a:hover {
     text-decoration: underline;
     color: #0056b3; /* เมื่อ hover สีเปลี่ยน */
-}
+  }
+  
