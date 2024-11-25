@@ -33,4 +33,12 @@
     "globals": "^15.11.0",
     "vite": "^5.4.10"
   }
+  "dependencies": {
+    "react": "^18.x.x",
+    "react-dom": "^18.x.x",
+    "react-router-dom": "^6.x.x",
+    "@mui/material": "^6.x.x",
+    "@emotion/react": "^11.x.x",
+    "@emotion/styled": "^11.x.x"
+  }
 }
