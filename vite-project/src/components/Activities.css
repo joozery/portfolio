@@ -2,7 +2,6 @@
 .activities-section {
     padding: 20px;
     background-color: black; /* เพิ่มพื้นหลังที่อ่อน */
-    border-radius: 10px; /* เพิ่มมุมโค้งให้กับ section */
   }
   
   .activities-list {
