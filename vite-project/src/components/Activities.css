@@ -14,6 +14,7 @@
   .activity-item {
     display: flex;
     align-items: center; /* จัดให้รูปภาพและข้อความอยู่ในแนวนอน */
+    justify-content: center; /* จัดให้ข้อความอยู่ตรงกลาง */
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
@@ -37,20 +38,21 @@
   .activity-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* จัดข้อความให้อยู่ตรงกลาง */
+    text-align: center; /* จัดข้อความให้ตรงกลาง */
   }
   
   .activity-info h3 {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px; /* เพิ่มช่องว่างด้านล่าง */
-    color: #333; /* สีตัวอักษรเข้ม */
+    color: #fff; /* สีตัวอักษรเป็นสีขาว */
   }
   
   .activity-info p {
     margin: 5px 0;
     font-size: 14px;
-    color: #555; /* สีตัวอักษรอ่อน */
+    color: #fff; /* สีตัวอักษรเป็นสีขาว */
   }
   
   .activity-info a {
