@@ -27,7 +27,7 @@ const activities = [
     description: "สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง",
     imageUrl: logoImage3,
     link: "/recreational-activities"
-  }
+  },
   {
     id: 4,
     title: "การแข่งขัน micro:bit",
