@@ -3,6 +3,8 @@ import "./Activities.css"; // import CSS ที่เราสร้างไว
 
 // ใช้ import รูปภาพแทน require
 import logoImage1 from "../assets/จิตอาสา เก็บขยะตามชายหาด บางแสน.jpg";
+import logoImage2 from "../assets/การแข่งขัน pichingณ สถาบันเทคโนโลยีแห่งสุว.jpg";
+import logoImage3 from "../assets/การแข่งขัน Microbit นิทรรศการวันวิทยาศาสตร_2.jpg";
 
 const activities = [
   {
@@ -16,14 +18,14 @@ const activities = [
     id: 2,
     title: "Academic Activities Training Attended",
     description: "กิจกรรมการอบรม ด้านวิชาการ",
-    imageUrl: "https://link-to-your-image-2.jpg",
+    imageUrl: logoImage2,
     link: "/academic-activities-training-attended"
   },
   {
     id: 3,
-    title: "Recreational Activities",
-    description: "กิจกรรมด้าน สันทนาการ",
-    imageUrl: "https://link-to-your-image-3.jpg",
+    title: "การแข่งขัน micro:bit",
+    description: "สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง",
+    imageUrl: logoImage3,
     link: "/recreational-activities"
   }
 ];
