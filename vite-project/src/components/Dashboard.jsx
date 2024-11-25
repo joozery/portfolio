@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { createDatabase } from "../database"; // สำหรับจัดการ SQLite
-import { Box, Grid, Paper, Typography, Button, TextField, List, ListItem, ListItemText } from "@mui/material";
+import { createDatabase } from "../database"; // เชื่อมต่อฐานข้อมูล SQLite
+import {
+  Box,
+  Paper,
+  Typography,
+  Button,
+  TextField,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 
 function Dashboard() {
-  const [db, setDb] = useState(null);
-  const [activities, setActivities] = useState([]);
-  const [newActivity, setNewActivity] = useState({ title: "", description: "", imageFile: null });
+  const [db, setDb] = useState(null); // เก็บฐานข้อมูล SQLite
+  const [activities, setActivities] = useState([]); // เก็บรายการกิจกรรม
+  const [newActivity, setNewActivity] = useState({
+    title: "",
+    description: "",
+    imageFile: null,
+  }); // เก็บข้อมูลกิจกรรมใหม่
 
   // สร้างฐานข้อมูล SQLite เมื่อ Component Mount
   useEffect(() => {
@@ -22,7 +35,7 @@ function Dashboard() {
           description,
           imageUrl: image_url,
         }));
-        setActivities(rows);
+        setActivities(rows); // อัปเดต State ด้วยข้อมูลที่ดึงมา
       }
     };
     initDb();
@@ -64,6 +77,14 @@ function Dashboard() {
 
       // รีเซ็ตฟอร์ม
       setNewActivity({ title: "", description: "", imageFile: null });
+    }
+  };
+
+  // ฟังก์ชันสำหรับลบกิจกรรม
+  const deleteActivity = (id) => {
+    if (db) {
+      db.run("DELETE FROM activities WHERE id = ?", [id]);
+      setActivities((prev) => prev.filter((activity) => activity.id !== id)); // อัปเดต State
     }
   };
 
@@ -130,9 +151,22 @@ function Dashboard() {
                   <img
                     src={activity.imageUrl}
                     alt={activity.title}
-                    style={{ width: "100px", height: "auto", borderRadius: "8px", marginLeft: "20px" }}
+                    style={{
+                      width: "100px",
+                      height: "auto",
+                      borderRadius: "8px",
+                      marginLeft: "20px",
+                    }}
                   />
                 )}
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => deleteActivity(activity.id)}
+                  sx={{ marginLeft: 2 }}
+                >
+                  Delete
+                </Button>
               </ListItem>
             ))}
           </List>
