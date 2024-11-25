@@ -1,13 +1,15 @@
-// src/components/Activities.jsx
 import React from "react";
 import "./Activities.css"; // import CSS ที่เราสร้างไว้
+
+// ใช้ import รูปภาพแทน require
+import logoImage1 from "../assets/จิตอาสา เก็บขยะตามชายหาด บางแสน.jpg";
 
 const activities = [
   {
     id: 1,
     title: "จิตอาสา เก็บขยะตามชายหาด",
     description: "สถานที่ บางแสน",
-    imageUrl: require("../assets/จิตอาสา เก็บขยะตามชายหาด บางแสน.jpg"),
+    imageUrl: logoImage1,  // ใช้ imageUrl ที่เป็น import
     link: "/academic-activities"
   },
   {
