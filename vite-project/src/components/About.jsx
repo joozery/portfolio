@@ -1,5 +1,5 @@
-import React from 'react';
-import Navbar from './Navbar';  // นำเข้า Navbar
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
 import './About.css';
 import slide01 from '../assets/slide01.jpg';
 import slide02 from '../assets/slide02.jpg';
@@ -7,7 +7,7 @@ import slide02 from '../assets/slide02.jpg';
 const About = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const images = [slide01, slide02];
+  const images = [slide01, slide02]; // เพิ่มรูปภาพที่ต้องการใช้ในการสไลด์
 
   // ฟังก์ชันเปลี่ยนภาพอัตโนมัติ
   useEffect(() => {
@@ -19,7 +19,7 @@ const About = () => {
 
   return (
     <>
-      <Navbar /> {/* เพิ่ม Navbar ใน About */}
+      <Navbar />  {/* เพิ่ม Navbar */}
       <section className="about-section">
         <h1>ABOUT</h1>
         <div className="about-content">
