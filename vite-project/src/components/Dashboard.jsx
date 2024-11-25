@@ -24,18 +24,26 @@ function Dashboard() {
   useEffect(() => {
     const initDb = async () => {
       const database = await createDatabase();
-      setDb(database);
+      if (database) {
+        console.log("Database initialized successfully"); // Log การสร้างฐานข้อมูล
+        setDb(database);
 
-      // ดึงข้อมูลกิจกรรมจากฐานข้อมูล
-      const result = database.exec("SELECT * FROM activities");
-      if (result.length > 0) {
-        const rows = result[0].values.map(([id, title, description, image_url]) => ({
-          id,
-          title,
-          description,
-          imageUrl: image_url,
-        }));
-        setActivities(rows); // อัปเดต State ด้วยข้อมูลที่ดึงมา
+        // ดึงข้อมูลกิจกรรมจากฐานข้อมูล
+        const result = database.exec("SELECT * FROM activities");
+        console.log("Fetched activities from database:", result); // Log ข้อมูลที่ดึงมา
+
+        if (result.length > 0) {
+          const rows = result[0].values.map(([id, title, description, image_url]) => ({
+            id,
+            title,
+            description,
+            imageUrl: image_url,
+          }));
+          console.log("Mapped activities:", rows); // Log ข้อมูลที่ถูก map
+          setActivities(rows);
+        }
+      } else {
+        console.error("Failed to initialize database"); // Log หากสร้างฐานข้อมูลล้มเหลว
       }
     };
     initDb();
@@ -45,11 +53,15 @@ function Dashboard() {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
+      console.log("File selected:", file.name); // Log ชื่อไฟล์ที่ถูกเลือก
       const reader = new FileReader();
       reader.onloadend = () => {
-        setNewActivity((prev) => ({ ...prev, imageFile: reader.result })); // เก็บ Base64 รูปภาพ
+        console.log("Image converted to Base64:", reader.result); // Log Base64 ของรูปภาพ
+        setNewActivity((prev) => ({ ...prev, imageFile: reader.result }));
       };
       reader.readAsDataURL(file);
+    } else {
+      console.error("No file selected"); // Log หากไม่มีการเลือกไฟล์
     }
   };
 
@@ -57,12 +69,24 @@ function Dashboard() {
   const addActivity = (e) => {
     e.preventDefault();
 
-    if (db) {
-      // บันทึกกิจกรรมลงในฐานข้อมูล
+    console.log("Form submitted with data:", newActivity); // Log ข้อมูลในฟอร์ม
+
+    if (!db) {
+      console.error("Database is not initialized"); // Log หากฐานข้อมูลยังไม่ได้ถูกตั้งค่า
+      return;
+    }
+
+    if (!newActivity.title || !newActivity.description || !newActivity.imageFile) {
+      console.error("Missing activity data:", newActivity); // Log หากข้อมูลในฟอร์มไม่ครบ
+      return;
+    }
+
+    try {
       db.run(
         "INSERT INTO activities (title, description, image_url) VALUES (?, ?, ?)",
         [newActivity.title, newActivity.description, newActivity.imageFile]
       );
+      console.log("Activity added to database!"); // Log หากเพิ่มกิจกรรมสำเร็จ
 
       // อัปเดตรายการกิจกรรมใน State
       setActivities((prev) => [
@@ -74,9 +98,12 @@ function Dashboard() {
           imageUrl: newActivity.imageFile,
         },
       ]);
+      console.log("Activities updated:", activities); // Log ข้อมูลที่ถูกอัปเดตใน State
 
       // รีเซ็ตฟอร์ม
       setNewActivity({ title: "", description: "", imageFile: null });
+    } catch (error) {
+      console.error("Error adding activity:", error); // Log หากเกิดข้อผิดพลาด
     }
   };
 
@@ -85,6 +112,7 @@ function Dashboard() {
     if (db) {
       db.run("DELETE FROM activities WHERE id = ?", [id]);
       setActivities((prev) => prev.filter((activity) => activity.id !== id)); // อัปเดต State
+      console.log(`Activity with id ${id} deleted successfully`); // Log การลบกิจกรรม
     }
   };
 
@@ -92,7 +120,7 @@ function Dashboard() {
     <Box sx={{ padding: 4, backgroundColor: "#f4f5fa", minHeight: "100vh" }}>
       {/* Header */}
       <Typography variant="h4" gutterBottom>
-        Dashboard - Add and View Activities
+        ระบบเพิ่มผลงาน Activity
       </Typography>
 
       {/* Form สำหรับเพิ่ม Activity */}

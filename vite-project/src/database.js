@@ -4,7 +4,8 @@ export async function createDatabase() {
   const SQL = await initSqlJs();
   const db = new SQL.Database();
 
-  // สร้างตาราง activities
+  console.log("Database initialized"); // Log การสร้างฐานข้อมูล
+
   db.run(`
     CREATE TABLE IF NOT EXISTS activities (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -13,6 +14,7 @@ export async function createDatabase() {
       image_url TEXT
     )
   `);
+  console.log("Table 'activities' is ready"); // Log การสร้างตาราง
 
   return db;
 }
