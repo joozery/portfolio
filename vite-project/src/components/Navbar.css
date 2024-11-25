@@ -1,56 +1,58 @@
-/* src/components/Navbar.css */
+/* สไตล์สำหรับ Navbar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  color: black;
-  padding: 20px;
-  width: 100%; /* ให้ Navbar ขยายเต็มความกว้าง */
-  box-sizing: border-box; /* รวม padding และ border เข้าเป็นส่วนหนึ่งของความกว้าง */
-  margin-top: 0; /* ไม่ให้มี margin บน */
-  border-bottom: 3px solid #0047AB;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000; /* ให้ Navbar อยู่เหนือเนื้อหาทั้งหมด */
-}
-
-.navbar-logo-group {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-logo {
-  width: 150px;
-}
-
-.navbar-menu {
-  background: none;
-  border: none;
-  color: black;
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
-/* ปรับความสูงและ padding บนหน้าจอขนาดกลาง */
-@media (max-width: 768px) {
-  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color: black;
+    padding: 20px 40px; /* ลด padding เพื่อให้เหมาะสมกับทุกแพลตฟอร์ม */
+    margin-top: 950px;
+    border-bottom: 3px solid #0047AB; /* เส้นสีน้ำเงินด้านล่าง */
+    position: relative;
+    width: 100%; /* ขยาย Navbar ให้เต็มความกว้างของหน้าจอ */
+    height: 80px;  /* กำหนดความสูงของ Navbar */
+  }
+  
+  .navbar-logo-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    width: 150px;
+  }
+  
+  .navbar-menu {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 2em;
+    cursor: pointer;
+  }
+  
+  /* ปรับการแสดงผลบนหน้าจอขนาดกลาง (เช่น tablet) */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 15px 40px;
+      height: 100px;
+      margin-top: 790px;
+    }
+  
+    .navbar-menu {
+      font-size: 2em;
+    }
+  }
+  
+  /* ปรับการแสดงผลบนหน้าจอขนาดเล็ก (เช่น mobile) */
+  @media (max-width: 480px) {
+    .navbar {
       padding: 10px 20px;
+      height: 60px;
+      margin-top: 1000px;
+    }
+  
+    .navbar-menu {
+      font-size: 1.8em;
+    }
   }
-
-  .navbar-menu {
-      font-size: 1.3em;
-  }
-}
-
-/* ปรับให้เหมาะสมกับโทรศัพท์ */
-@media (max-width: 480px) {
-  .navbar {
-      padding: 10px 15px;
-  }
-
-  .navbar-menu {
-      font-size: 1.2em;
-  }
-}
+  
