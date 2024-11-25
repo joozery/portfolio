@@ -8,22 +8,22 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       output: {
-        format: 'es',
+        format: 'es', // ใช้ ES Module
       },
     },
-    target: 'esnext',
+    target: 'esnext', // รองรับ WebAssembly
   },
-  publicDir: 'public',
+  publicDir: 'public', // โฟลเดอร์ public
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
-      'sql.js': resolve(__dirname, './node_modules/sql.js/dist/sql-wasm.js'),
+      '@': resolve(__dirname, './src'), // ชื่อ alias
+      'sql.js': resolve(__dirname, './node_modules/sql.js/dist/sql-wasm.js'), // ชี้ไปยังไฟล์ WebAssembly
     },
   },
   optimizeDeps: {
-    exclude: ['sql.js'],
+    exclude: ['sql.js'], // ยกเว้น sql.js จากการ optimize
   },
   worker: {
-    format: 'es',
+    format: 'es', // รองรับ WebAssembly ใน worker
   },
 });
