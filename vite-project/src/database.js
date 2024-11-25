@@ -1,7 +1,7 @@
 // src/database.js
-const Database = require('better-sqlite3'); // หรือใช้ sqlite3 ขึ้นอยู่กับที่คุณใช้
+const Database = require('better-sqlite3');  // ใช้ better-sqlite3 สำหรับ SQLite
 
-// ฟังก์ชันสำหรับสร้างฐานข้อมูล
+// ฟังก์ชันสร้างฐานข้อมูล
 function createDatabase() {
   const db = new Database('./src/activities.sqlite', { verbose: console.log });
 
