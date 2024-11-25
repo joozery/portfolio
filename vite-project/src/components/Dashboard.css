@@ -1,37 +1,66 @@
-.dashboard {
+/* src/components/Activities.css */
+.activities-section {
     padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: black; /* เพิ่มพื้นหลังที่อ่อน */
+    border-radius: 10px; /* เพิ่มมุมโค้งให้กับ section */
   }
   
-  .dashboard-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .activities-list {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
   }
   
-  .dashboard-widget {
-    padding: 20px;
+  .activity-item {
+    display: flex;
+    align-items: center; /* จัดให้รูปภาพและข้อความอยู่ในแนวนอน */
     background-color: #fff;
+    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .dashboard-widget h2 {
-    margin: 0 0 10px;
+  .activity-item:hover {
+    transform: translateY(-5px); /* เมื่อ hover จะยกขึ้น */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* เพิ่มเงาหนาเมื่อ hover */
   }
   
-  .dashboard-chart {
-    grid-column: span 2; /* ขยาย chart ให้เต็ม */
-    padding: 20px;
-    background-color: #fff;
+  .activity-image {
+    width: 100px; /* กำหนดขนาดของรูป */
+    height: 100px;
+    object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 15px; /* ช่องว่างระหว่างรูปและข้อความ */
+  }
+  
+  .activity-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .activity-info h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px; /* เพิ่มช่องว่างด้านล่าง */
+    color: #333; /* สีตัวอักษรเข้ม */
+  }
+  
+  .activity-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555; /* สีตัวอักษรอ่อน */
+  }
+  
+  .activity-info a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .activity-info a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* เมื่อ hover สีเปลี่ยน */
   }
   
