@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import About from './components/About';  // นำเข้า About component
 import './App.css';
 import profilePic from './assets/profile.png';
+import 'bootstrap/dist/css/bootstrap.min.css';  // นำเข้า Bootstrap CSS
 
 function App() {
   const [showLandingPage, setShowLandingPage] = useState(true);
@@ -30,13 +31,13 @@ function App() {
               element={
                 <>
                   <section className="portfolio-header">
-                    <h1>PORTFOLIO</h1>
-                    <p>Teeratat Wiboonsanti</p>
+                    <h1 className="text-center">PORTFOLIO</h1> {/* ใช้ className ของ Bootstrap */}
+                    <p className="text-center">Teeratat Wiboonsanti</p> {/* ใช้ className ของ Bootstrap */}
                   </section>
                   <ImageSlider />
                   <section className="profile-section">
-                    <h2>PROFILE</h2>
-                    <div className="profile-content">
+                    <h2 className="text-center">PROFILE</h2> {/* ใช้ className ของ Bootstrap */}
+                    <div className="profile-content d-flex justify-content-center"> {/* ใช้ className ของ Bootstrap */}
                       <img src={profilePic} alt="Teeratat Wiboonsanti" className="profile-picture" />
                       <div className="profile-details">
                         <h3>Teeratat Wiboonsanti</h3>
