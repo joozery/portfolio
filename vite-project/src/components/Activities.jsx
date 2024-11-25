@@ -1,15 +1,12 @@
 import React from "react";
 import "./Activities.css"; // import CSS ที่เราสร้างไว้
 
-// ใช้ import รูปภาพแทน require
-import logoImage1 from "../assets/จิตอาสา เก็บขยะตามชายหาด บางแสน.jpg";
-
 const activities = [
   {
     id: 1,
     title: "จิตอาสา เก็บขยะตามชายหาด",
     description: "สถานที่ บางแสน",
-    imageUrl: logoImage1,  // ใช้ imageUrl ที่เป็น import
+    imageUrl: require("../assets/จิตอาสา เก็บขยะตามชายหาด บางแสน.jpg"),
     link: "/academic-activities"
   },
   {
@@ -44,11 +41,13 @@ const Activities = () => {
                 alt={activity.title}
                 className="activity-image"
               />
-              <h3>{activity.title}</h3>
-              <p>{activity.description}</p>
-              <a href={activity.link} className="more-link">
-                more
-              </a>
+              <div className="activity-info">
+                <h3>{activity.title}</h3>
+                <p>{activity.description}</p>
+                <a href={activity.link} className="more-link">
+                  more
+                </a>
+              </div>
             </div>
           ))}
         </div>
