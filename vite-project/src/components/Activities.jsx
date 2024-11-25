@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { createDatabase } from "./database";
+import { createDatabase } from "../database";
 
 function Activities() {
   const [activities, setActivities] = useState([]);
