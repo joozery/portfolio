@@ -1,26 +1,46 @@
+/* ImageSlider.css */
 .image-slider-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0% 0;
-    background-color: transparent; /* ตั้งค่าเป็นโปร่งใส */
-  }
-  
-  .image-slider-single {
-    width: 100%;
-    height: 300px; /* ปรับความสูงตามต้องการ */
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .slide-image-single {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* ปรับภาพให้ครอบคลุมคอนเทนเนอร์ */
-  }
-  
+  position: relative;
+  width: 100%;
+  max-width: 100%; /* ให้ภาพขยายเต็มหน้าจอ */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.image-slider-single {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.slide-image-single {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px; /* ให้ dot อยู่ด้านล่างของภาพ */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #0047ab; /* สีของ dot ที่ active */
+}
+
+.dot:hover {
+  background-color: #007bff;
+}
