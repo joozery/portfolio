@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { createDatabase } from "../database";
 
 function Activities() {
   const [activities, setActivities] = useState([]);
-  const [db, setDb] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // สร้างฐานข้อมูล SQLite เมื่อ Component Mount
   useEffect(() => {
-    const initDb = async () => {
-      const database = await createDatabase();
-      setDb(database);
-
-      // ดึงข้อมูลกิจกรรมจากฐานข้อมูล
-      const results = database.exec("SELECT * FROM activities");
-      if (results.length > 0) {
-        const activityData = results[0].values.map(([id, title, description, image_url]) => ({
-          id,
-          title,
-          description,
-          imageUrl: image_url,
-        }));
-        setActivities(activityData);
+    // ดึงข้อมูลกิจกรรมจาก API
+    const fetchActivities = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/activities");
+        const data = await response.json();
+        setActivities(data.activities);
+      } catch (err) {
+        setError("Error fetching activities");
+      } finally {
+        setLoading(false);
       }
     };
-    initDb();
+
+    fetchActivities();
   }, []);
+
+  if (loading) {
+    return <p>Loading activities...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <section className="activities-section">
@@ -36,7 +40,13 @@ function Activities() {
         <div className="activities-list">
           {activities.map((activity) => (
             <div className="activity-item" key={activity.id}>
-              <img src={activity.imageUrl} alt={activity.title} style={{ width: "100%", borderRadius: "8px" }} />
+              {activity.image_url && (
+                <img
+                  src={activity.image_url}
+                  alt={activity.title}
+                  style={{ width: "100%", borderRadius: "8px" }}
+                />
+              )}
               <h3>{activity.title}</h3>
               <p>{activity.description}</p>
               <a href={`/activity/${activity.id}`} className="more-link">
