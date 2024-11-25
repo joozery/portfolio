@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './Navbar';  // ถ้า Navbar.jsx อยู่ในโฟลเดอร์เดียวกับ About.jsx
 import './About.css';
 import slide01 from '../assets/slide01.jpg';
 import slide02 from '../assets/slide02.jpg';
