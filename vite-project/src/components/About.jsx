@@ -1,7 +1,21 @@
-import React from 'react';
-import './About.css';  // นำเข้าไฟล์ CSS
+import React, { useState, useEffect } from 'react';
+import './About.css';
+import slide01 from '../assets/slide01.jpg';
+import slide02 from '../assets/slide02.jpg';
 
 const About = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const images = [slide01, slide02]; // เพิ่มรูปภาพที่ต้องการใช้ในการสไลด์
+
+  // ฟังก์ชันเปลี่ยนภาพอัตโนมัติ
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // เปลี่ยนภาพทุก 5 วินาที
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="about-section">
       <h1>ABOUT</h1>
@@ -15,10 +29,23 @@ const About = () => {
             หวังว่าเว็บไซต์นี้จะเป็นแหล่งข้อมูลและแรงบันดาลใจให้กับทุกท่าน หากมีข้อเสนอแนะหรือความคิดเห็นใด กระผมยินดีรับฟังและพัฒนาเว็บไซต์ให้ดีขึ้น
           </p>
         </div>
-        
-        {/* รูปภาพ */}
+
+        {/* ส่วนแสดงผลภาพสไลด์ */}
         <div className="about-image">
-          <img src="about-image.jpg" alt="About Me" />
+          <div className="image-slider-container">
+            <div className="image-slider-single">
+              <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slide-image-single" />
+            </div>
+            <div className="dots">
+              {images.map((_, index) => (
+                <span
+                  key={index}
+                  className={`dot ${currentIndex === index ? 'active' : ''}`}
+                  onClick={() => setCurrentIndex(index)}
+                ></span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
