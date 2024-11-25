@@ -1,45 +1,50 @@
 // src/components/Activities.jsx
-import React, { useState, useEffect } from "react";
-import { createDatabase } from "../database";  // นำเข้าฟังก์ชัน createDatabase
+import React from "react";
+import "./Activities.css"; // import CSS ที่เราสร้างไว้
 
-function Activities() {
-  const [activities, setActivities] = useState([]);
-  const [db, setDb] = useState(null);
+const activities = [
+  {
+    id: 1,
+    title: "Academic Activities Competition",
+    description: "กิจกรรมการแข่งขัน ด้านวิชาการ",
+    imageUrl: "https://link-to-your-image-1.jpg",
+    link: "/academic-activities"
+  },
+  {
+    id: 2,
+    title: "Academic Activities Training Attended",
+    description: "กิจกรรมการอบรม ด้านวิชาการ",
+    imageUrl: "https://link-to-your-image-2.jpg",
+    link: "/academic-activities-training-attended"
+  },
+  {
+    id: 3,
+    title: "Recreational Activities",
+    description: "กิจกรรมด้าน สันทนาการ",
+    imageUrl: "https://link-to-your-image-3.jpg",
+    link: "/recreational-activities"
+  }
+];
 
-  // สร้างฐานข้อมูล SQLite เมื่อ Component Mount
-  useEffect(() => {
-    const initDb = async () => {
-      const database = await createDatabase();  // สร้างฐานข้อมูล
-      setDb(database);
-
-      // ดึงข้อมูลกิจกรรมจากฐานข้อมูล
-      const results = database.exec("SELECT * FROM activities");
-      if (results.length > 0) {
-        const activityData = results[0].values.map(([id, title, description, image_url]) => ({
-          id,
-          title,
-          description,
-          imageUrl: image_url,
-        }));
-        setActivities(activityData);  // อัปเดตข้อมูลกิจกรรม
-      }
-    };
-    initDb();  // เรียกฟังก์ชันในการสร้างฐานข้อมูล
-  }, []);
-
+const Activities = () => {
   return (
     <section className="activities-section">
       <h2>Activities</h2>
+
       {activities.length === 0 ? (
         <p>No activities available. Please add some activities.</p>
       ) : (
         <div className="activities-list">
           {activities.map((activity) => (
             <div className="activity-item" key={activity.id}>
-              <img src={activity.imageUrl} alt={activity.title} style={{ width: "100%", borderRadius: "8px" }} />
+              <img
+                src={activity.imageUrl}
+                alt={activity.title}
+                className="activity-image"
+              />
               <h3>{activity.title}</h3>
               <p>{activity.description}</p>
-              <a href={`/activity/${activity.id}`} className="more-link">
+              <a href={activity.link} className="more-link">
                 more
               </a>
             </div>
@@ -48,6 +53,6 @@ function Activities() {
       )}
     </section>
   );
-}
+};
 
 export default Activities;
