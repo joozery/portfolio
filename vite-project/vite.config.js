@@ -5,25 +5,12 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist',
-    rollupOptions: {
-      output: {
-        format: 'es', // ใช้ ES Module
-      },
-    },
-    target: 'esnext', // รองรับ WebAssembly
+    outDir: 'dist', // กำหนด output folder สำหรับ build
   },
-  publicDir: 'public', // โฟลเดอร์ public
+  publicDir: 'public', // ให้แน่ใจว่า public directory จะถูกคัดลอกไปยัง build
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'), // ชื่อ alias
-      'sql.js': resolve(__dirname, './node_modules/sql.js/dist/sql-wasm.js'), // ชี้ไปยังไฟล์ WebAssembly
+      '@': resolve(__dirname, './src'), // ตั้ง alias สำหรับ src
     },
-  },
-  optimizeDeps: {
-    exclude: ['sql.js'], // ยกเว้น sql.js จากการ optimize
-  },
-  worker: {
-    format: 'es', // รองรับ WebAssembly ใน worker
   },
 });
