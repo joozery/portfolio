@@ -1,41 +1,57 @@
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+import express from 'express';
+import sqlite3 from 'sqlite3';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
-const PORT = 5000;
+const port = 3000;
 
-// ตัวอย่างฐานข้อมูลในหน่วยความจำ
-let activities = [
-  { id: 1, title: "Activity 1", description: "Description of Activity 1" },
-  { id: 2, title: "Activity 2", description: "Description of Activity 2" },
-];
+// ใช้ fileURLToPath เพื่อให้ได้ __dirname ใน ES Module
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-// ดึงข้อมูลกิจกรรมทั้งหมด
-app.get("/activities", (req, res) => {
-  res.json(activities);
+// เชื่อมต่อกับฐานข้อมูล SQLite
+const db = new sqlite3.Database(path.resolve('activities.sqlite'), (err) => {
+  if (err) {
+    console.error('Failed to connect to the database:', err.message);
+  } else {
+    console.log('Database connected');
+  }
 });
 
-// เพิ่มกิจกรรมใหม่
-app.post("/activities", (req, res) => {
-  const { title, description } = req.body;
-  const newActivity = { id: Date.now(), title, description };
-  activities.push(newActivity);
-  res.status(201).json(newActivity);
+// ให้บริการไฟล์ static จากโฟลเดอร์ dist ของ frontend (vite-project)
+app.use(express.static(path.join(__dirname, '..', 'vite-project', 'dist')));
+
+app.get('/api/activities', (req, res) => {
+  db.all("SELECT * FROM activities", (err, rows) => {
+    if (err) {
+      res.status(500).send({ message: 'Error fetching activities', error: err.message });
+    } else {
+      res.json(rows);
+    }
+  });
 });
 
-// ลบกิจกรรม
-app.delete("/activities/:id", (req, res) => {
-  const { id } = req.params;
-  activities = activities.filter((activity) => activity.id !== parseInt(id));
-  res.status(200).json({ message: "Activity deleted successfully" });
+app.post('/api/activities', (req, res) => {
+  const { title, description, imageUrl } = req.body;
+
+  const query = "INSERT INTO activities (title, description, image_url) VALUES (?, ?, ?)";
+  db.run(query, [title, description, imageUrl], function (err) {
+    if (err) {
+      res.status(500).send({ message: 'Error adding activity', error: err.message });
+    } else {
+      res.status(201).send({ message: 'Activity added', id: this.lastID });
+    }
+  });
 });
 
-// เริ่มต้นเซิร์ฟเวอร์
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+// ส่งไฟล์ index.html เมื่อไม่ได้ระบุ route อื่น ๆ
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'vite-project', 'dist', 'index.html'));
+});
+
+// เริ่มเซิร์ฟเวอร์
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
